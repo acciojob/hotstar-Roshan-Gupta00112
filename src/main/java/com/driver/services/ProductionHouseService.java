@@ -17,7 +17,7 @@ public class ProductionHouseService {
 
         // Creating ProductionHouse Object & Setting it's all attribute
         ProductionHouse productionHouse=new ProductionHouse(productionHouseEntryDto.getName());
-        //productionHouse.setRatings(0.0);
+        productionHouse.setRatings(0.0);
 
         // Saving it in DB
         productionHouseRepository.save(productionHouse);
