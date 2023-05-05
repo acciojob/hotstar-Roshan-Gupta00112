@@ -20,9 +20,9 @@ public class ProductionHouseService {
         productionHouse.setRatings(0.0);
 
         // Saving it in DB
-        productionHouseRepository.save(productionHouse);
+        ProductionHouse productionHouse1= productionHouseRepository.save(productionHouse);
 
-        return  productionHouse.getId();
+        return  productionHouse1.getId();
     }
 
 

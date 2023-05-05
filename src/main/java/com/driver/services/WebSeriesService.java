@@ -55,8 +55,10 @@ public class WebSeriesService {
         // Saving the ProductionHouse Object & since it is Parent of WebSeries and having CASCADE All, so it also save the WebSeries Object
         productionHouseRepository.save(productionHouse);
 
+        WebSeries newWebSeries=webSeriesRepository.save(webSeries);
+
         //return null;
-        return webSeries.getId();
+        return newWebSeries.getId();
     }
 
 }
