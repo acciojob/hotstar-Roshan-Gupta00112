@@ -39,17 +39,33 @@ public class UserService {
         int count=0;
 
         User user=userRepository.findById(userId).get();
+        int userPrecedence=precedence(user.getSubscription().getSubscriptionType());
 
         List<WebSeries> webSeriesList=webSeriesRepository.findAll();
 
         for (WebSeries series:webSeriesList){
-            if ((series.getSubscriptionType()==user.getSubscription().getSubscriptionType()) && (series.getAgeLimit()<=user.getAge()) ){
+//            if (((series.getSubscriptionType())==(user.getSubscription().getSubscriptionType())) && (series.getAgeLimit()<=user.getAge()) ){
+//                count++;
+//            }
+            if((precedence(series.getSubscriptionType())<=userPrecedence) && series.getAgeLimit()<=user.getAge()){
                 count++;
             }
         }
 
         //return null;
         return count;
+    }
+
+    private int precedence(SubscriptionType subscriptionType){
+        switch (subscriptionType){
+            case BASIC:
+                return 1;
+            case PRO:
+                return 2;
+            default:
+                return 3;
+
+        }
     }
 
 

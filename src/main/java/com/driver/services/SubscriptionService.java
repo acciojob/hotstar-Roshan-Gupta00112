@@ -59,12 +59,12 @@ public class SubscriptionService {
         User user=userRepository.findById(userId).get();
 
         if(user.getSubscription().getSubscriptionType()==SubscriptionType.BASIC){
-            diffPrice=800-user.getSubscription().getTotalAmountPaid();
+            diffPrice=800-(user.getSubscription().getTotalAmountPaid());
             user.getSubscription().setSubscriptionType(SubscriptionType.PRO);
             user.getSubscription().setNoOfScreensSubscribed(250);
         }
         else if (user.getSubscription().getSubscriptionType()==SubscriptionType.PRO) {
-            diffPrice=1000-user.getSubscription().getTotalAmountPaid();
+            diffPrice=1000-(user.getSubscription().getTotalAmountPaid());
             user.getSubscription().setSubscriptionType(SubscriptionType.ELITE);
             user.getSubscription().setNoOfScreensSubscribed(350);
         }

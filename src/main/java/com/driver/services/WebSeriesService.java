@@ -37,7 +37,7 @@ public class WebSeriesService {
         List<WebSeries> webSeriesList=productionHouse.getWebSeriesList();
         webSeriesList.add(webSeries);
         int size=webSeriesList.size();
-        int avgRatings=0;
+        double avgRatings=0;
 
         for(WebSeries series:webSeriesList){
             avgRatings+=series.getRating();
@@ -58,7 +58,7 @@ public class WebSeriesService {
     }
 
     private boolean isWebSeriesExist(String name){
-        if(webSeriesRepository.findBySeriesName(name).equals(name)) return true;
+        if((webSeriesRepository.findBySeriesName(name)).equals(name)) return true;
 
         return false;
     }
