@@ -57,10 +57,10 @@ public class UserService {
     }
 
     private int precedence(SubscriptionType subscriptionType){
-        switch (subscriptionType){
-            case BASIC:
+        switch (subscriptionType.toString()){
+            case "BASIC":
                 return 1;
-            case PRO:
+            case "PRO":
                 return 2;
             default:
                 return 3;

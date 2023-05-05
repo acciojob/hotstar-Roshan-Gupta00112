@@ -27,7 +27,9 @@ public class WebSeriesService {
         //Don't forget to save the production and webseries Repo
 
         // Checking Whether the WebSeries with the Same Name Exist or Not
-        if(isWebSeriesExist(webSeriesEntryDto.getSeriesName())) throw new Exception("Series is already present");
+        if(webSeriesRepository.findBySeriesName(webSeriesEntryDto.getSeriesName())!=null){
+            throw new Exception("Series is already present");
+        }
 
         // Creating a WebSeries Object and Setting it's all attributes
         WebSeries webSeries=new WebSeries(webSeriesEntryDto.getSeriesName(), webSeriesEntryDto.getAgeLimit(), webSeriesEntryDto.getRating(), webSeriesEntryDto.getSubscriptionType());
@@ -55,12 +57,6 @@ public class WebSeriesService {
 
         //return null;
         return webSeries.getId();
-    }
-
-    private boolean isWebSeriesExist(String name){
-        if((webSeriesRepository.findBySeriesName(name)).equals(name)) return true;
-
-        return false;
     }
 
 }
